@@ -4,6 +4,8 @@ import cn.cubegarden.huntrace.game.settings.*
 
 class HuntraceGame {
 
+    lateinit var worldSetting: WorldSetting
+
     fun applySetting(setting: AntiCheatSetting) {
         TODO()
     }
@@ -25,7 +27,7 @@ class HuntraceGame {
     }
 
     fun applySetting(setting: WorldSetting) {
-        TODO()
+        this.worldSetting = setting
     }
 
     fun applySettings(vararg settings: GameSetting) {
