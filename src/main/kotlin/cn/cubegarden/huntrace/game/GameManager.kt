@@ -1,4 +1,4 @@
 package cn.cubegarden.huntrace.game
 
-class Game {
+object GameManager {
 }

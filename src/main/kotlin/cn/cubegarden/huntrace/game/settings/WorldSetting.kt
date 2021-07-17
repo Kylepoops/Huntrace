@@ -1,4 +1,8 @@
 package cn.cubegarden.huntrace.game.settings
 
-class WorldSetting : GameSetting {
-}
+import org.bukkit.Difficulty
+
+data class WorldSetting(
+    val newGenerator: Boolean,
+    val difficulty: Difficulty
+) : GameSetting

@@ -1,4 +1,7 @@
 package cn.cubegarden.huntrace.game.settings
 
-class InventorySetting : GameSetting {
-}
+import org.bukkit.inventory.PlayerInventory
+
+data class InventorySetting(
+    val inventory: PlayerInventory
+) : GameSetting

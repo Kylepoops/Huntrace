@@ -1,4 +1,6 @@
 package cn.cubegarden.huntrace.game.settings
 
-class SurvivorSetting : PlayerSetting() {
+data class SurvivorSetting(
+    val inventorySetting: InventorySetting
+) : PlayerSetting() {
 }
