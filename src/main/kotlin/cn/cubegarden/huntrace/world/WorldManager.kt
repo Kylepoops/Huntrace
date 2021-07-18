@@ -7,6 +7,9 @@ import org.bukkit.Bukkit
 import org.bukkit.PortalType
 import org.bukkit.World
 import org.bukkit.WorldCreator
+import com.onarandombox.multiverseinventories.MultiverseInventories
+import com.onarandombox.multiverseinventories.share.Sharables
+
 
 object WorldManager {
 
@@ -14,28 +17,42 @@ object WorldManager {
     private val MVWorldManager = (Bukkit.getServer().pluginManager.getPlugin("Multiverse-Core") as Core).mvWorldManager!!
     private val NetherPortals = (Bukkit.getServer().pluginManager.getPlugin("Multiverse-NetherPortals")
             as MultiverseNetherPortals)
+    private val inveotoriesGroupManager =
+        (Bukkit.getServer().pluginManager.getPlugin("Multiverse-Inventories") as MultiverseInventories).groupManager
 
-    fun generateWorld(setting: WorldSetting, name: String): World {
+    fun initWorld(setting: WorldSetting, name: String): World {
         lateinit var overWorld: World
-        WorldCreator(name + "_nether").apply {
+
+        val netherWorldName = "${name}_nether"
+        val endWorldName = "${name}_the_end"
+
+        WorldCreator(netherWorldName).apply {
             environment(World.Environment.NETHER)
             setting.seed?.let { seed(it) }
         }
-        WorldCreator(name + "_the_end").apply {
+        WorldCreator(endWorldName).apply {
             environment(World.Environment.THE_END)
             setting.seed?.let { seed(it) }
         }
-        WorldCreator(name).run {
+        WorldCreator(name).apply {
             generateStructures(setting.generateStructures)
             setting.seed?.let { seed(it) }
             overWorld = createWorld()!!
         }
 
-        NetherPortals.addWorldLink(name, name + "_nether", PortalType.NETHER)
-        NetherPortals.addWorldLink(name + "_nether", name, PortalType.NETHER)
+        NetherPortals.addWorldLink(name, netherWorldName, PortalType.NETHER)
+        NetherPortals.addWorldLink(netherWorldName, name, PortalType.NETHER)
 
-        NetherPortals.addWorldLink(name, name + "_the_end", PortalType.ENDER)
-        NetherPortals.addWorldLink(name + "_the_end", name, PortalType.ENDER)
+        NetherPortals.addWorldLink(name, endWorldName, PortalType.ENDER)
+        NetherPortals.addWorldLink(endWorldName, name, PortalType.ENDER)
+
+        inveotoriesGroupManager.newEmptyGroup(name).apply {
+            addWorld(name)
+            addWorld(netherWorldName)
+            addWorld(endWorldName)
+            getShares().addAll(Sharables.allOf())
+            inveotoriesGroupManager.updateGroup(this@apply)
+        }
 
         return overWorld
 
