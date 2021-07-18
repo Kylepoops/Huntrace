@@ -50,7 +50,7 @@ object WorldManager {
             addWorld(name)
             addWorld(netherWorldName)
             addWorld(endWorldName)
-            getShares().addAll(Sharables.allOf())
+            shares.addAll(Sharables.allOf())
             inveotoriesGroupManager.updateGroup(this@apply)
         }
 
