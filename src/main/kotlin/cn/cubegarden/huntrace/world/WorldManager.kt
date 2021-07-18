@@ -14,9 +14,10 @@ import com.onarandombox.multiverseinventories.share.Sharables
 object WorldManager {
 
     val currentWorldMap = hashMapOf<Int, World>()
-    private val MVWorldManager = (Bukkit.getServer().pluginManager.getPlugin("Multiverse-Core") as Core).mvWorldManager!!
-    private val NetherPortals = (Bukkit.getServer().pluginManager.getPlugin("Multiverse-NetherPortals")
-            as MultiverseNetherPortals)
+    private val MVWorldManager =
+        (Bukkit.getServer().pluginManager.getPlugin("Multiverse-Core") as Core).mvWorldManager!!
+    private val NetherPortals =
+        (Bukkit.getServer().pluginManager.getPlugin("Multiverse-NetherPortals") as MultiverseNetherPortals)
     private val inveotoriesGroupManager =
         (Bukkit.getServer().pluginManager.getPlugin("Multiverse-Inventories") as MultiverseInventories).groupManager
 
