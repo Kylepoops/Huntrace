@@ -29,10 +29,12 @@ object WorldManager {
         WorldCreator(netherWorldName).apply {
             environment(World.Environment.NETHER)
             setting.seed?.let { seed(it) }
+            createWorld()
         }
         WorldCreator(endWorldName).apply {
             environment(World.Environment.THE_END)
             setting.seed?.let { seed(it) }
+            createWorld()
         }
         WorldCreator(name).apply {
             generateStructures(setting.generateStructures)
