@@ -20,6 +20,8 @@ dependencies {
     implementation 'net.wesjd:anvilgui:1.5.1-SNAPSHOT'
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
     compileOnly 'com.onarandombox.multiversecore:Multiverse-Core:4.2.2'
+    compileOnly 'com.onarandombox.multiverseinventories:Multiverse-Inventories:4.2.2'
+    compileOnly 'com.onarandombox.multiversenetherportals:Multiverse-NetherPortals:4.2.2-SNAPSHOT'
 }
 
 // 防止TabooLib删除Kotlin库导致在Kotlin库版本不一致时无法运行
