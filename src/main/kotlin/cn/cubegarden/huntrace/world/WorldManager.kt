@@ -40,11 +40,13 @@ object WorldManager {
             overWorld = createWorld()!!
         }
 
-        NetherPortals.addWorldLink(name, netherWorldName, PortalType.NETHER)
-        NetherPortals.addWorldLink(netherWorldName, name, PortalType.NETHER)
+        NetherPortals.apply {
+            addWorldLink(name, netherWorldName, PortalType.NETHER)
+            addWorldLink(netherWorldName, name, PortalType.NETHER)
 
-        NetherPortals.addWorldLink(name, endWorldName, PortalType.ENDER)
-        NetherPortals.addWorldLink(endWorldName, name, PortalType.ENDER)
+            addWorldLink(name, endWorldName, PortalType.ENDER)
+            addWorldLink(endWorldName, name, PortalType.ENDER)
+        }
 
         inveotoriesGroupManager.newEmptyGroup(name).apply {
             addWorld(name)
@@ -55,7 +57,6 @@ object WorldManager {
         }
 
         return overWorld
-
     }
 
     fun deleteWorld(name: String) {
