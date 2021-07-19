@@ -8,7 +8,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 object MainSettingBuilder {
-    lateinit var gui: InventoryGui
+    var gui: InventoryGui
     init {
         val guiSetup = arrayOf(
             "abcadefga",
@@ -17,16 +17,22 @@ object MainSettingBuilder {
         )
         gui = InventoryGui(Main.INSTANCE, "追杀生存", guiSetup)
 
-        gui.addElement(StaticGuiElement(
-            'h',
-            ItemStack(Material.GRASS_BLOCK),
-            1,
-            GuiElement.Action {
-                click ->
-                TODO()
-                return@Action true
-            },
-            "打开世界设置"
-        ))
+        gui.apply {
+            addElement(StaticGuiElement(
+                'h',
+                ItemStack(Material.GRASS_BLOCK),
+                1,
+                GuiElement.Action {
+                        click ->
+                    TODO()
+                    return@Action true
+                },
+                "打开世界设置"
+            ))
+
+            addElement(StaticGuiElement(
+
+            ))
+        }
     }
 }
