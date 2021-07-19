@@ -1,5 +1,5 @@
 package cn.cubegarden.huntrace.game.settings
 
 data class AntiCheatSetting(
-    val enabled: Boolean
+    var enabled: Boolean = true
 ) : GameSetting

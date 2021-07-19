@@ -1,6 +1,5 @@
 package cn.cubegarden.huntrace.game.settings
 
 data class HunterSetting(
-    val inventorySetting: InventorySetting
-) : PlayerSetting() {
-}
+    var inventorySetting: InventorySetting = InventorySetting()
+) : PlayerSetting()

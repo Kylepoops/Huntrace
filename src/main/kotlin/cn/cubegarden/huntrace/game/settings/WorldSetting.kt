@@ -3,8 +3,7 @@ package cn.cubegarden.huntrace.game.settings
 import org.bukkit.Difficulty
 
 data class WorldSetting(
-    // val newGenerator: Boolean,
-    val difficulty: Difficulty,
-    val generateStructures: Boolean,
-    val seed : Long? = null
+    var difficulty: Difficulty = Difficulty.HARD,
+    var generateStructures: Boolean = true,
+    var seed : Long? = null
 ) : GameSetting
