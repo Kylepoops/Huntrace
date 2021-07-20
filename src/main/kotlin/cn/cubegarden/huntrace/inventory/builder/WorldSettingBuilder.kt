@@ -8,6 +8,7 @@ import de.themoep.inventorygui.StaticGuiElement
 import net.wesjd.anvilgui.AnvilGUI
 import org.bukkit.Difficulty
 import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 object WorldSettingBuilder {
@@ -110,6 +111,7 @@ object WorldSettingBuilder {
                         }
                         return@onComplete result
                     }
+                    builder.open(it.whoClicked as Player)
                     true
                 },
                 "设置种子"
