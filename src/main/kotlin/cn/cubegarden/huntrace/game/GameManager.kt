@@ -8,7 +8,7 @@ object GameManager {
 
     fun <T: HumanEntity> T.getSettingsOrCreate(): HuntraceSettings {
         this as Player
-        if (this !in settingsMap) {
+        if (this !in settingsMap || settingsMap[this] == null) {
             settingsMap[this] = HuntraceSettings()
         }
         return settingsMap[this]!!
